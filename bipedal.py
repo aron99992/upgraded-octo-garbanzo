@@ -14,7 +14,7 @@ os.makedirs(video_folder, exist_ok=True)
 
 
 class ActionClipping(gym.ActionWrapper):
-    def __init__(self, env, clip_range=0.8):
+    def __init__(self, env, clip_range=0.7):
         super().__init__(env)
         self.clip_range = clip_range
     
