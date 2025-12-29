@@ -43,7 +43,7 @@
 
 **Final Results:**
 - **Total timesteps trained:** 600,000
-- **Mean reward:** 288.00 ± 95.27
+- **Mean reward:** 269.85 +/- 25.30
 - **Success rate:** Consistently walks forward without falling
 
 
@@ -127,18 +127,18 @@ temperature: 1.0 → 0.0
 
 ## Ablation Studies
 
-### Study 1: Impact of Reward Shaping
-* **No Shaping:** Agent struggled to stand; often learned to "sit" to minimize negative rewards. (Mean: -50)
-* **Heavy Shaping (Linear):** Agent learned to walk but was "over-cautious," plateauing at 280.
-* **Light Quadratic Shaping:** Agent achieved a natural gait and was able to reach scores >300. (Mean: 288+)
+Final reward: 270
 
-### Study 2: Influence of Batch Size
-* **Batch Size 64:** High oscillation in the loss curves; the walker appeared "spazzy."
-* **Batch Size 512:** Smooth convergence. The larger batch size (enabled by Apple Silicon/MPS) was critical for stable gradients in this continuous environment.
+### Impact of Reward Shaping Penalties
+Baseline (no penalties): 228 median reward
+Conclusion: While the agent can learn to walk without penalties, it lacks discipline to stay upright consistently. Adding the penalties resulted in a 18% performance boost 
+### Impact of Reward/Action Clipping
+Without clipping: 232 median reward
+Conclusion: Extreme torque or massive reward spikes can cause good behaviors to overwrite bad ones. The clipping restricted the agent's ability to make catastrophic updates.
+### Simulated Annealing
+Without annealing (constant parameters): 232 median reward
+ Without the annealing schedule, the agent never settled into its best wait, it kept trying to change its movements even after finding a winning strategy. 
 
-### Study 3: Reward Clipping
-* **With Clipping [-10, 10]:** Stable learning early on, but the agent never "raced" to the finish because the finish-line bonus was capped.
-* **Without Clipping:** Allowed the +100 point finish bonus to guide the final 100k steps of training.
 
 
 
@@ -154,7 +154,7 @@ temperature: 1.0 → 0.0
 
 
 
-### Plateau at 290-300 Reward
+### Plateau at 280-300 Reward
 
 **Problem:** Performance consistently stagnated around 290 reward after 300k-400k steps, sometimes degrading afterward.
 
@@ -180,7 +180,7 @@ temperature: 1.0 → 0.0
 
 ### Final Performance
 
-- **Best mean reward:** 288.00 ± 95.27
+- **Best mean reward:** 269.85 +/- 25.30
 - **Training timesteps:** 600,000
 - **Key success factor:** Network capacity and action space restriction were primary drivers. Reward shaping had minimal impact due to small penalty magnitudes.
 
