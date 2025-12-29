@@ -14,7 +14,7 @@ This project explores  RL techniques to train a bipedal walking agent, achieving
 
 Aaron Lee  
 lalalaaaron@gmail.com  
-Performance: 288 ± 95 reward over 600,000 training steps
+Performance: 269.85 +/- 25.30 reward over 600,000 training steps
 
 
 Quick Start
@@ -69,8 +69,8 @@ python train.py
 
 ### Key Milestones
 - 0-200k steps: Rapid learning (50 → 220 reward)
-- 200k-400k steps: Plateau phase (~280-290 reward)
-- 400k-600k steps: Annealing refinement (stabilized at 288)
+- 200k-400k steps: Plateau phase (~250-70 reward)
+- 400k-600k steps: Annealing refinement (stabilized at 270)
 
 
 
