@@ -86,8 +86,6 @@ python train.py
 
 ## Files and Assets
 * `train.py`: Main script containing the PPO implementation and custom reward wrapper.
-* `ppo_bipedal_tensorboard/`: Training logs for visualization in TensorBoard.
-* `videos/`: Recorded performance of the walker at various stages of training.
 
 ## Acknowledgments
 
