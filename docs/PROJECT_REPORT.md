@@ -39,7 +39,7 @@
 
 ## Walker Performance
 
-**Video:** [See Releases section for best performance video]
+**Video:** https://screenapp.io/app/v/dNt03cshq1 
 
 **Final Results:**
 - **Total timesteps trained:** 600,000
